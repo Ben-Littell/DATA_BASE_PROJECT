@@ -48,6 +48,7 @@ def get_salary():
     key_list = []
     salary_start = input('Enter salary start: ')
     salary_end = input('Enter salary end: ')
+    pass
 
 
 def main():
