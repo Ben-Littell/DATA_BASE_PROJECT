@@ -48,7 +48,35 @@ def get_salary():
     key_list = []
     salary_start = input('Enter salary start: ')
     salary_end = input('Enter salary end: ')
-    pass
+    for key in dict_salary:
+        key_val = dict_salary.get(key)
+        for numb in range(int(salary_start), int(salary_end), 1000):
+            if key_val[5] == str(numb):
+                key_list.append(key)
+    for key in key_list:
+        print(dict_salary[key])
+
+
+def get_date():
+    dict_dates = open_file()
+    key_list = []
+    start_date = input('Enter start date MM/DD/YYYY: ')
+    end_date = input('Enter end date MM/DD/YYYY: ')
+    modified_date_end = \
+        int(end_date.split('/')[0]) * 32 + int(end_date.split('/')[1]) + int(end_date.split('/')[2]) * 500
+    modified_date_start = \
+        int(start_date.split('/')[0]) * 32 + int(start_date.split('/')[1]) + int(start_date.split('/')[2]) * 500
+    for key in dict_dates:
+        key_value = dict_dates.get(key)
+        key_value_s = \
+            int(key_value[4].split('/')[0]) * 32 + \
+            int(key_value[4].split('/')[1]) + \
+            int(key_value[4].split('/')[2]) * 500
+        if modified_date_start <= key_value_s <= modified_date_end:
+            print(modified_date_start, modified_date_end, key_value_s)
+            key_list.append(key)
+    for key in key_list:
+        print(dict_dates[key])
 
 
 def main():
@@ -68,9 +96,11 @@ def main():
             get_gender()
             run = False
         elif prompt == '3':
-            pass
+            get_salary()
+            run = False
         elif prompt == '4':
-            pass
+            get_date()
+            run = False
         elif prompt == '5':
             pass
         elif prompt == '6':
