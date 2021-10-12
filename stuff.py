@@ -79,6 +79,24 @@ def get_date():
         print(dict_dates[key])
 
 
+def get_position():
+    dict_position = open_file()
+    key_list = []
+    position_enter = input('Enter 1 for Sales, 2 for Software, or 3 for Management: ')
+    if position_enter == '1':
+        choice = 'Sales'
+    elif position_enter == '2':
+        choice = 'Software'
+    else:
+        choice = 'Management'
+    for key in dict_position:
+        key_val = dict_position.get(key)
+        if key_val[6] == choice:
+            key_list.append(key)
+    for key in key_list:
+        print(dict_position[key])
+
+
 def main():
     run = True
     while run:
@@ -102,7 +120,8 @@ def main():
             get_date()
             run = False
         elif prompt == '5':
-            pass
+            get_position()
+            run = False
         elif prompt == '6':
             run = False
         else:
